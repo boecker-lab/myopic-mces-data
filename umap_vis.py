@@ -2,11 +2,12 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 from rdkit.Chem import PandasTools
-from dash import dcc, html, Input, Output, no_update
-from jupyter_dash import JupyterDash
+from dash import dcc, html, Input, Output, no_update, Dash
 from rdkit.Chem import MolFromSmiles, Draw
+import flask
 
-app = JupyterDash(__name__)
+server = flask.Flask(__name__)
+app = Dash(__name__, server=server)
 
 @app.callback(
     Output('graph-tooltip', 'show'),
@@ -52,6 +53,5 @@ def get_dash_app(filter_sets=None):
                           style={'display': 'inline-block'})
     return app
 
-if __name__ == '__main__':
-    app = get_dash_app()
-    app.run()
+app = get_dash_app()
+app.run_server()
