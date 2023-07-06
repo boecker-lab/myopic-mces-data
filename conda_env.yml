@@ -1,0 +1,11 @@
+name: umap_mces
+channels:
+  - conda-forge
+dependencies:
+  - umap-learn
+  - numba=0.53.1
+  - pandas
+  - plotly
+  - rdkit
+  - dash
+  - jupyter-dash
