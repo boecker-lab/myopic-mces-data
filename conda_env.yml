@@ -3,10 +3,9 @@ channels:
   - conda-forge
 dependencies:
   - umap-learn
-  - numba=0.53.1
+  - numba=0.53.1                # needed for stored UMAP object
   - pandas
   - plotly
   - rdkit
   - dash
-  - flask
   - gunicorn

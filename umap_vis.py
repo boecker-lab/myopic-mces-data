@@ -4,10 +4,9 @@ import plotly.express as px
 from rdkit.Chem import PandasTools
 from dash import dcc, html, Input, Output, no_update, Dash
 from rdkit.Chem import MolFromSmiles, Draw
-import flask
 
-server = flask.Flask(__name__)
-app = Dash(__name__, server=server)
+app = Dash(__name__)
+server = app.server
 
 @app.callback(
     Output('graph-tooltip', 'show'),
@@ -55,4 +54,5 @@ def get_dash_app(filter_sets=None):
     return app
 
 app = get_dash_app(['biomolecules', 'Tox21', 'SMRT'])
-app.run_server()
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port='8050')
