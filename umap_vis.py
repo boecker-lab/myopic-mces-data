@@ -25,11 +25,11 @@ def display_hover(hoverData):
     bbox = pt['bbox']
     smiles, = pt['customdata']
     ext_data = no_update
-    data = Draw._moltoimg(MolFromSmiles(smiles), (200, 200), [], '', returnPNG=True, kekulize=True)
+    data = Draw._moltoimg(MolFromSmiles(smiles), (200, 200), [], '', returnPNG=True)
     children = [
         html.Div([
             html.Img(src=f'data:image/png;base64,{PandasTools._get_image(data)}'),
-            html.P(f'SMILES: {smiles}'),
+            # html.P(f'SMILES: {smiles}', style={'font-size': '6px'}),
         ], style={'width': '200px', 'white-space': 'normal'})
     ]
     return True, bbox, children, ext_data
@@ -45,13 +45,14 @@ def get_dash_app(filter_sets=None):
     fig = px.scatter(df, x='umap1', y='umap2', color='set',
                      custom_data=['smiles'])
     fig.update_traces(hoverinfo='none', hovertemplate=None)
+    fig.update_traces(marker={'size': 2})
     fig.update_layout(width=800, height=700)
-    fig.update_layout(clickmode='event+select')
+    #fig.update_layout(clickmode='event+select')
     app.layout = html.Div([html.Div(dcc.Graph(id='umap-plot', figure=fig, clear_on_unhover=True),
                                     style={'display': 'inline-block'}),
                            dcc.Tooltip(id='graph-tooltip')],
                           style={'display': 'inline-block'})
     return app
 
-app = get_dash_app()
+app = get_dash_app(['biomolecules', 'Tox21', 'SMRT'])
 app.run_server()
