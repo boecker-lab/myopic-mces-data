@@ -1,0 +1,10 @@
+include:
+  template: Auto-DevOps.gitlab-ci.yml
+variables:
+  CI_RUNNER_TAGS: "kubernetes,docker"
+  POSTGRES_ENABLED: "false"
+  STAGING_ENABLED: "false"
+default:
+  tags:
+  - kubernetes
+  - docker
