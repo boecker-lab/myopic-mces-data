@@ -8,4 +8,5 @@ dependencies:
   - plotly
   - rdkit
   - dash
-  - jupyter-dash
+  - flask
+  - gunicorn
