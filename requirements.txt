@@ -1,0 +1,7 @@
+umap-learn
+numba=0.53.1
+pandas
+plotly
+rdkit
+dash
+gunicorn

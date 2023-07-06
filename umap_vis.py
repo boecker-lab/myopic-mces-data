@@ -55,4 +55,4 @@ def get_dash_app(filter_sets=None):
 
 app = get_dash_app(['biomolecules', 'Tox21', 'SMRT'])
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port='8050')
+    app.run()
