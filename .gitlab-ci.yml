@@ -5,7 +5,3 @@ variables:
   POSTGRES_ENABLED: "false"
   STAGING_ENABLED: "false"
   TEST_DISABLED: "true"
-default:
-  tags:
-  - kubernetes
-  - docker
