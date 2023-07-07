@@ -5,6 +5,15 @@ variables:
   POSTGRES_ENABLED: "false"
   STAGING_ENABLED: "false"
   TEST_DISABLED: "true"
+build:
+  before_script:
+    - |
+      if [[ $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH ]]; then
+        export SENTRY_PUBLISH_RELEASE="{setCommits: {auto: true, ignoreMissing: true}}"
+      fi
+  services:
+    - name: 'docker:20.10.6-dind'
+      command: ['--tls=false', '--host=tcp://0.0.0.0:2375', '--mtu=1300']
 
 staging:
   variables:
