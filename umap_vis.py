@@ -21,7 +21,10 @@ app.layout = html.Div([dropdown, graph, tooltip])
 def update_figure(dataset):
     fig = px.scatter(umap_df.loc[umap_df.set.isin(['biomolecules', dataset])],
                      x='umap1', y='umap2', color='set',
-                     custom_data=['smiles'])
+                     custom_data=['smiles'],
+                     template='simple_white',
+                     color_discrete_map={'biomolecules': '#aaaaaa'} |
+                     {s: '#fc054b' for s in umap_df.set.unique().tolist() if s != 'biomolecules'})
     fig.update_traces(hoverinfo='none', hovertemplate=None)
     fig.update_traces(marker={'size': 2})
     fig.update_layout(
