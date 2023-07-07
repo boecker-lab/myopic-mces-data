@@ -21,3 +21,6 @@ variables:
 #       name: production
 #       url: http://www.csi-fingerid.uni-jena.de/$CI_PROJECT_PATH_SLUG/
 
+default:
+  tags:
+  - docker
