@@ -2,7 +2,7 @@ include:
   template: Auto-DevOps.gitlab-ci.yml
 variables:
   POSTGRES_ENABLED: "false"
-  STAGING_ENABLED: "false"
+  STAGING_ENABLED: "true"
   TEST_DISABLED: "true"
 
 staging:
