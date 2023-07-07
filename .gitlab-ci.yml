@@ -5,3 +5,19 @@ variables:
   POSTGRES_ENABLED: "false"
   STAGING_ENABLED: "false"
   TEST_DISABLED: "true"
+
+staging:
+  variables:
+    KUBE_NAMESPACE: "myopic-mces-data-staging"
+  environment:
+      name: staging
+      url: http://www.csi-fingerid.uni-jena.de/$CI_PROJECT_PATH_SLUG-staging/
+
+production_manual:
+  variables:
+    KUBE_NAMESPACE: "myopic-mces-data"
+#    ADDITIONAL_HOSTS: ""
+  environment:
+      name: production
+      url: http://www.csi-fingerid.uni-jena.de/$CI_PROJECT_PATH_SLUG/
+
