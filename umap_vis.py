@@ -14,7 +14,7 @@ graph = dcc.Graph(id='umap-plot', clear_on_unhover=True, config=dict(scrollZoom=
 dropdown = dcc.Dropdown(umap_df.set.unique().tolist(), 'Tox21', id='set-select', clearable=False)
 tooltip = dcc.Tooltip(id='graph-tooltip')
 
-app.layout = html.Div([dropdown, graph, tooltip])
+app.layout = html.Div([dropdown, graph, tooltip], style=dict(width='200px'))
 
 
 @app.callback(Output(graph, 'figure'), Input(dropdown, 'value'))
@@ -53,9 +53,11 @@ def display_hover(hoverData):
     data = Draw._moltoimg(MolFromSmiles(smiles), (200, 200), [], '', returnPNG=True)
     children = [
         html.Div([
-            html.Img(src=f'data:image/png;base64,{PandasTools._get_image(data)}'),
+            html.Img(src=f'data:image/png;base64,{PandasTools._get_image(data)}',
+                     alt='SMILES: ' + smiles,
+                     style=dict(float='left', margin='0px 15px 15px 0px', height=120, width=120, border=2)),
             # html.P(f'SMILES: {smiles}', style={'font-size': '6px'}),
-        ], style={'width': '200px', 'white-space': 'normal'})
+        ], style={'width': '120px', 'white-space': 'normal'})
     ]
     return True, bbox, children, ext_data
 
