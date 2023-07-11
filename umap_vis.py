@@ -4,9 +4,17 @@ import plotly.express as px
 from rdkit.Chem import PandasTools
 from dash import dcc, html, Input, Output, no_update, Dash, callback
 from rdkit.Chem import MolFromSmiles, Draw
+import os
 
 app = Dash(__name__)
 server = app.server
+
+# for reverse proxy, add prefix to dash app settings
+if (os.environ.get('PROXY_PREFIX', '') != ''):
+    app.config.update({
+        'routes_pathname_prefix': os.environ['PROXY_PREFIX'],
+        'requests_pathname_prefix': os.environ['PROXY_PREFIX']
+    })
 
 umap_df = pd.read_csv('umap_df.csv')
     # df = umap_df.loc[umap_df.set.isin(filter_sets)]
