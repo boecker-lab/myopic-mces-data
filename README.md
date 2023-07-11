@@ -39,5 +39,4 @@ conda activate umap_mces
 
 ## Docker
 
-For deployment behind a reverse proxy, use the environment variable `PROXY_PREFIX` with the docker
-run option `docker run -e PROXY_PREFIX='mysite.com/' ...`.
+For deployment behind a reverse proxy, use the environment variables `PROXY_PREFIX_REQUESTS`, `PROXY_PREFIX_ROUTES` and `PROXY_PREFIX_URL` with the docker run option `docker run -e PROXY_PREFIX='mysite.com/' ...`.

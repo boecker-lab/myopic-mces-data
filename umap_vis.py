@@ -8,11 +8,16 @@ import os
 
 dash_settings = {}
 # for reverse proxy, add prefix to dash app settings
-if (os.environ.get('PROXY_PREFIX', '') != ''):
+try:
     dash_settings.update({
-        'routes_pathname_prefix': os.environ['PROXY_PREFIX'],
-        'requests_pathname_prefix': os.environ['PROXY_PREFIX']
+        'requests_pathname_prefix': os.environ['PROXY_PREFIX_REQUESTS'],
+        'routes_pathname_prefix': os.environ['PROXY_PREFIX_ROUTES']
     })
+    dash_settings.update({
+                'url_base_pathname': os.environ['PROXY_PREFIX_URL'],
+    })
+except:
+    pass
 
 app = Dash(__name__, **dash_settings)
 server = app.server
