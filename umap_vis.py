@@ -17,7 +17,6 @@ if (os.environ.get('PROXY_PREFIX', '') != ''):
     })
 
 umap_df = pd.read_csv('umap_df.csv')
-    # df = umap_df.loc[umap_df.set.isin(filter_sets)]
 graph = dcc.Graph(id='umap-plot', clear_on_unhover=True, config=dict(scrollZoom=True))
 dropdown = dcc.Dropdown(umap_df.set.unique().tolist(), 'Tox21', id='set-select', clearable=False)
 tooltip = dcc.Tooltip(id='graph-tooltip')
@@ -29,7 +28,7 @@ app.layout = html.Div([dropdown, graph, tooltip], style=dict(width='200px'))
 def update_figure(dataset):
     fig = px.scatter(umap_df.loc[umap_df.set.isin(['biomolecules', dataset])],
                      x='umap1', y='umap2', color='set',
-                     custom_data=['smiles'],
+                     custom_data=['smiles', 'name', 'classyfire_labels'],
                      template='simple_white',
                      color_discrete_map={'biomolecules': '#aaaaaa'} |
                      {s: '#fc054b' for s in umap_df.set.unique().tolist() if s != 'biomolecules'})
@@ -56,16 +55,21 @@ def display_hover(hoverData):
     if ('customdata' not in pt): # hovering over highlight
         return False, no_update, no_update, no_update
     bbox = pt['bbox']
-    smiles, = pt['customdata']
+    smiles, name, classes = pt['customdata']
     ext_data = no_update
     data = Draw._moltoimg(MolFromSmiles(smiles), (200, 200), [], '', returnPNG=True)
     children = [
         html.Div([
+            #html.H4(name),
             html.Img(src=f'data:image/png;base64,{PandasTools._get_image(data)}',
                      alt='SMILES: ' + smiles,
-                     style=dict(float='left', margin='0px 15px 15px 0px', height=120, width=120, border=2)),
+                     style=dict(float='left', margin='0px 15px 15px 0px', height=200, width=200, border=2)),
+            html.Div([
+                html.P('ClassyFire classes'),
+                html.Ul([html.Li(c, style={'font-size': '10pt'}) for c in classes.split('; ')])
+            ] if classes is not None else [])
             # html.P(f'SMILES: {smiles}', style={'font-size': '6px'}),
-        ], style={'width': '120px', 'white-space': 'normal'})
+        ], style={'width': '200px', 'white-space': 'normal'})
     ]
     return True, bbox, children, ext_data
 
