@@ -6,15 +6,17 @@ from dash import dcc, html, Input, Output, no_update, Dash, callback
 from rdkit.Chem import MolFromSmiles, Draw
 import os
 
-app = Dash(__name__)
-server = app.server
-
+dash_settings = {}
 # for reverse proxy, add prefix to dash app settings
 if (os.environ.get('PROXY_PREFIX', '') != ''):
-    app.config.update({
+    dash_settings.update({
         'routes_pathname_prefix': os.environ['PROXY_PREFIX'],
         'requests_pathname_prefix': os.environ['PROXY_PREFIX']
     })
+
+app = Dash(__name__, **dash_settings)
+server = app.server
+
 
 umap_df = pd.read_csv('umap_df.csv')
 graph = dcc.Graph(id='umap-plot', clear_on_unhover=True, config=dict(scrollZoom=True))
