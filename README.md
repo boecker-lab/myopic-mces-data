@@ -36,3 +36,8 @@ conda env create -f conda_env.yml
 # to activate:
 conda activate umap_mces
 ```
+
+## Docker
+
+For deployment behind a reverse proxy, use the environment variable `PROXY_PREFIX` with the docker
+run option `docker run -e PROXY_PREFIX='mysite.com/' ...`.
