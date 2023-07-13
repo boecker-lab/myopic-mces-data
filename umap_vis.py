@@ -6,27 +6,18 @@ from dash import dcc, html, Input, Output, no_update, Dash, callback
 from rdkit.Chem import MolFromSmiles, Draw
 import os
 
-dash_settings = {}
 # for reverse proxy, add prefix to dash app settings
-if (os.environ.get('PROXY_PREFIX_ROUTES', '') != ''):
-    try:
-        dash_settings.update({
-            'routes_pathname_prefix': os.environ['PROXY_PREFIX_ROUTES']
-        })
-    except:
-        pass
-if (os.environ.get('PROXY_PREFIX_REQUESTS', '') != ''):
-    try:
-        dash_settings.update({'requests_pathname_prefix': os.environ['PROXY_PREFIX_REQUESTS'],})
-    except:
-        pass
-if (os.environ.get('PROXY_PREFIX_URL', '') != ''):
-    try:
-        dash_settings.update({
-                    'url_base_pathname': os.environ['PROXY_PREFIX_URL'],
-        })
-    except:
-        pass
+dash_settings = {}
+try:
+    for env in ['PROXY_PREFIX_ROUTES', 'PROXY_PREFIX_REQUESTS', 'PROXY_PREFIX_URL']:
+        if (os.environ.get(env, '') != ''):
+            dash_settings.update({
+                {'PROXY_PREFIX_ROUTES': 'routes_pathname_prefix',
+                 'PROXY_PREFIX_REQUESTS': 'requests_pathname_prefix',
+                 'PROXY_PREFIX_URL': 'url_base_pathname'}[env]: os.environ[env]
+            })
+except Exception as e:
+    print('failed setting proxy setting in Dash', e)
 
 app = Dash(__name__, **dash_settings)
 server = app.server
