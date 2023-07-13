@@ -46,8 +46,8 @@ conda activate umap_mces
 
 ## Docker
 
-A docker container for the visualization is available on Docker Hub: XXX.
+A docker container for the visualization can be built with the provided [Dockerfile](Dockerfile).
 
 For the special case of self-hosting the docker container via reverse proxy, the environment
-variable `PROXY_PREFIX_REQUESTS` has to be set to `XXX` with the docker run option `docker run -e
-PROXY_PREFIX_REQUESTS='XXX/' ...`.
+variable `PROXY_PREFIX_REQUESTS` might have to be set with the docker run option `docker run -e
+PROXY_PREFIX_REQUESTS='...' ...`.
