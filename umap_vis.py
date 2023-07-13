@@ -98,7 +98,7 @@ def display_hover(hoverData):
     data = Draw._moltoimg(MolFromSmiles(smiles), (200, 200), [], '', returnPNG=True)
     children = [
         html.Div([
-            #html.H4(name),
+            html.H5(name),
             html.Img(src=f'data:image/png;base64,{PandasTools._get_image(data)}',
                      alt='SMILES: ' + smiles,
                      style=dict(float='left', margin='0px 15px 15px 0px', height=200, width=200, border=2)),
