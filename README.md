@@ -44,6 +44,8 @@ conda env create -f conda_env.yml
 conda activate umap_mces
 ```
 
+![Visualization example](visualization_example.gif)
+
 ## Docker
 
 A docker container for the visualization can be built with the provided [Dockerfile](Dockerfile).
