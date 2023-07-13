@@ -2,7 +2,8 @@
 
 This repository contains datasets from the Paper [Small molecule machine learning: All models are
 wrong, some may not even be helpful](https://doi) alongside Jupyter Notebooks for visualization of
-MCES distances. Files too large for GitHub are hosted at [OSF](https://doi.org/10.17605/OSF.IO/5SXFE).
+MCES distances. Files too large for GitHub are hosted at
+[OSF](https://doi.org/10.17605/OSF.IO/5SXFE).
 
 | file                               | description                                                                                                                                                                          |
 |------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -15,8 +16,12 @@ MCES distances. Files too large for GitHub are hosted at [OSF](https://doi.org/1
 
 ## Visualization
 
-Visualization of precomputed UMAP embeddings as well as for new structures can be performed with the notebook [display_umap.ipynb](display_umap.ipynb).
-To project MCES distances of a new dataset onto the existing UMAP embedding, use [umap_embedding.ipynb](umap_embedding.ipynb).
+Visualization of precomputed UMAP embeddings as well as for new structures is possible via the
+python-script [umap_vis.py](umap_vis.py). If you just want to use the visualization, download this
+repository and run `python umap_vis.py`.
+
+To project MCES distances of a new dataset onto the existing UMAP embedding, use the Jupyter
+Notebook [umap_embedding.ipynb](umap_embedding.ipynb).
 
 Python packages required are:
 ```
@@ -27,10 +32,12 @@ numpy
 plotly
 rdkit
 dash
-jupyter-dash
+gunicorn
 ```
 
-A conda (or [mamba](https://github.com/mamba-org/mamba)) environment with all necessary packages installed can be created with
+A conda (or [mamba](https://github.com/mamba-org/mamba)) environment with all necessary packages
+installed can be created with
+
 ```bash
 conda env create -f conda_env.yml
 # to activate:
@@ -39,4 +46,8 @@ conda activate umap_mces
 
 ## Docker
 
-For deployment behind a reverse proxy, use the environment variables `PROXY_PREFIX_REQUESTS`, `PROXY_PREFIX_ROUTES` and `PROXY_PREFIX_URL` with the docker run option `docker run -e PROXY_PREFIX='mysite.com/' ...`.
+A docker container for the visualization is available on Docker Hub: XXX.
+
+For the special case of self-hosting the docker container via reverse proxy, the environment
+variable `PROXY_PREFIX_REQUESTS` has to be set to `XXX` with the docker run option `docker run -e
+PROXY_PREFIX_REQUESTS='XXX/' ...`.
