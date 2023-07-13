@@ -41,7 +41,8 @@ try:
 except Exception as e:
     print('failed setting proxy setting in Dash', e)
 
-app = Dash(__name__, **dash_settings)
+app = Dash(__name__, title='UMAP-MCES Visualization',
+           **dash_settings)
 server = app.server
 
 umap_df = pd.read_csv('umap_df.csv')
