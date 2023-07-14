@@ -4,8 +4,8 @@ RUN micromamba install -y -n base -f /tmp/env.yaml && \
     micromamba clean --all --yes
 COPY . /app
 WORKDIR /app
-EXPOSE 8050
+EXPOSE 5000
 ENV PROXY_PREFIX_URL=
 ENV PROXY_PREFIX_REQUESTS=
 ENV PROXY_PREFIX_ROUTES=
-CMD ["gunicorn",  "umap_vis:server",  "--bind", "0.0.0.0:8050"]
+CMD ["gunicorn",  "umap_vis:server",  "--bind", "0.0.0.0:5000"]

@@ -1,6 +1,3 @@
 ingress:
   tls:
     enabled: false
-service:
-  internalPort: 8050
-
