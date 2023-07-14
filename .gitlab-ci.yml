@@ -10,7 +10,7 @@ staging:
     KUBE_NAMESPACE: "myopic-mces-data-staging"
   environment:
       name: staging
-      url: http://$KUBE_INGRESS_BASE_DOMAIN/$CI_PROJECT_PATH_SLUG-staging/
+      url: http://staging.mces-data.$KUBE_INGRESS_BASE_DOMAIN/
 
 production_manual:
   variables:
@@ -18,7 +18,7 @@ production_manual:
 #    ADDITIONAL_HOSTS: ""
   environment:
       name: production
-      url: http://$KUBE_INGRESS_BASE_DOMAIN/$CI_PROJECT_PATH_SLUG/
+      url: http://mces-data.$KUBE_INGRESS_BASE_DOMAIN/
 
 default:
   tags:
