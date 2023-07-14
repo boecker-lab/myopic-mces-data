@@ -47,7 +47,8 @@ server = app.server
 
 umap_df = pd.read_csv('umap_df.csv')
 graph = dcc.Graph(id='umap-plot', clear_on_unhover=True, config=dict(scrollZoom=True))
-dropdown = dcc.Dropdown(umap_df.set.unique().tolist(), 'Tox21', id='set-select', clearable=False)
+dropdown = dcc.Dropdown([s for s in umap_df.set.unique().tolist() if s != 'biomolecules excluded'],
+                        'biomolecules', id='set-select', clearable=False)
 tooltip = dcc.Tooltip(id='graph-tooltip')
 
 app.layout = html.Div([dropdown, graph, tooltip], style=dict(width='200px'))
