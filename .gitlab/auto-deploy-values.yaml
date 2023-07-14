@@ -1,3 +1,11 @@
 ingress:
   tls:
     enabled: false
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 75
+resources:
+  requests:
+    cpu: 500m
