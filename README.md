@@ -25,7 +25,7 @@ Notebook [umap_embedding.ipynb](umap_embedding.ipynb).
 
 Python packages required are:
 ```
-umap-learn
+umap-learn=0.5.3
 numba=0.53.1
 pandas
 numpy

@@ -2,7 +2,7 @@ name: umap_mces
 channels:
   - conda-forge
 dependencies:
-  - umap-learn
+  - umap-learn=0.5.3
   - numba=0.53.1                # needed for stored UMAP object
   - pandas
   - plotly
