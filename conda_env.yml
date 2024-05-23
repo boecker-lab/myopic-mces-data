@@ -4,6 +4,7 @@ channels:
 dependencies:
   - umap-learn=0.5.3
   - numba=0.53.1                # needed for stored UMAP object
+  - scipy=1.7.1                 # needed for stored UMAP object
   - pandas
   - plotly
   - rdkit

@@ -27,6 +27,7 @@ Python packages required are:
 ```
 umap-learn=0.5.3
 numba=0.53.1
+scipy=1.7.1
 pandas
 numpy
 plotly
