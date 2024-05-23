@@ -1,7 +1,7 @@
 # Structure visualization via UMAP embedding of MCES distances
 
 This repository contains datasets from the Paper [Small molecule machine learning: All models are
-wrong, some may not even be helpful](https://doi) alongside Jupyter Notebooks for visualization of
+wrong, some may not even be helpful](https://doi.org/10.1101/2023.03.27.534311) alongside Jupyter Notebooks for visualization of
 MCES distances. Files too large for GitHub are hosted at
 [OSF](https://doi.org/10.17605/OSF.IO/5SXFE).
 
