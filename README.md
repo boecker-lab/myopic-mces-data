@@ -23,7 +23,7 @@ repository and run `python umap_vis.py`.
 To project MCES distances of a new dataset onto the existing UMAP embedding, use the Jupyter
 Notebook [umap_embedding.ipynb](umap_embedding.ipynb).
 
-Python packages required are:
+A python installation with version >= 3.9 is required (3.9.18 is was used in development). Packages required are:
 ```
 umap-learn=0.5.3
 numba=0.53.1
