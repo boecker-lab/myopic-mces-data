@@ -17,7 +17,7 @@ MCES distances. Files too large for GitHub are hosted at
 
 Visualization of precomputed UMAP embeddings as well as for new structures is possible via the
 python-script [umap_vis.py](umap_vis.py). If you just want to use the visualization, download this
-repository and run `python umap_vis.py`.
+repository and run `python umap_vis.py`. A small web service for the visualization is running at [https://mces-data.boeckerlab.uni-jena.de/](https://mces-data.boeckerlab.uni-jena.de/).
 
 To project MCES distances of a new dataset onto the existing UMAP embedding, use the Jupyter
 Notebook [umap_embedding.ipynb](umap_embedding.ipynb).
